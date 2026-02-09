@@ -22,7 +22,7 @@ body {
 .blob-1 { width: 300px; height: 300px; background: #0071e3; top: -100px; right: -50px; }
 .blob-2 { width: 250px; height: 250px; background: #42b883; bottom: 50px; left: -50px; }
 
-.container { padding: 20px; max-width: 600px; margin: 0 auto; }
+.container { padding: 20px; max-width: 600px; margin: 0 auto; padding-bottom: 60px;}
 
 .header { padding: 40px 0 20px; }
 .header h1 { font-size: 38px; font-weight: 700; letter-spacing: -1px; line-height: 1.1; }
@@ -115,3 +115,4 @@ body {
     background: white; color: black; padding: 10px 20px;
     border-radius: 25px; text-decoration: none; font-weight: 600; font-size: 13px;
 }
+
