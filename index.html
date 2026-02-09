@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>IT Architect | Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1>Digital <span>Architect</span></h1>
+            <p>Biznesingizni avtomatlashtirish uchun premium IT yechimlar</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h2>50+</h2>
+                <p>Muvaffaqiyatli loyiha</p>
+            </div>
+            <div class="stat-card">
+                <h2>4 YIL</h2>
+                <p>Sohadagi tajriba</p>
+            </div>
+        </div>
+
+        <h3 class="section-subtitle">Mening Xizmatlarim</h3>
+        <div class="services-container">
+            <div class="service-chip"><i class="fas fa-chart-line"></i> <span>CRM Tizimlar</span></div>
+            <div class="service-chip"><i class="fas fa-globe"></i> <span>Veb saytlar</span></div>
+            <div class="service-chip"><i class="fas fa-rocket"></i> <span>Landing Page</span></div>
+            <div class="service-chip"><i class="fab fa-telegram-plane"></i> <span>Telegram Botlar</span></div>
+            <div class="service-chip"><i class="fas fa-window-maximize"></i> <span>Telegram Web Apps</span></div>
+        </div>
+
+        <h3 class="section-subtitle">Tanlangan loyihalar</h3>
+        <div id="project-list"></div>
+
+        <h3 class="section-subtitle">Hamkorlik Shartlari</h3>
+        <div class="terms-grid">
+            <div class="term-card">
+                <i class="fas fa-server"></i>
+                <div>
+                    <h4>Server va Cloud</h4>
+                    <p>Loyiha barqaror ishlashi uchun cloud serverga o'rnatiladi. Oldindan 6 oylik server to'lovi lozim.</p>
+                </div>
+            </div>
+            <div class="term-card">
+                <i class="fas fa-user-shield"></i>
+                <div>
+                    <h4>Kafolatli Nazorat</h4>
+                    <p>Loyiha topshirilgach, 1 hafta davomida bepul texnik nazorat ta'minlanadi.</p>
+                </div>
+            </div>
+            <div class="term-card">
+                <i class="fas fa-tools"></i>
+                <div>
+                    <h4>Qo'shimcha Xizmatlar</h4>
+                    <p>Loyihaga o'zgartirish kiritish soatiga **$10** stavka asosida hisoblanadi.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div style="height: 50px;"></div>
+    </div>
+
+    <div id="overlay" onclick="closeProject()"></div>
+    
+    <div class="bottom-sheet" id="sheet">
+        <div class="sheet-handle"></div>
+        <button class="close-x" onclick="closeProject()">&times;</button> 
+        <div id="sheet-content"></div>
+    </div>
+
+    <div class="hub">
+        <h5>Loyihangizni boshlaymizmi?</h5>
+        <a href="https://t.me/muhib_dev" class="hub-btn">Bog'lanish</a>
+    </div>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="projects.js"></script>
+</body>
+</html>
