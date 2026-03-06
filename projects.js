@@ -62,7 +62,7 @@ const projectData = {
         title: "Le Vanille",
         icon: "fa-cake-candles",
         subtitle: "Shirinlik do'koni uchun platforma",
-        desc: "Turli xil shirinliklar sotuvi bilan shug'ullanuvchi brend uchun platforma. Mijoz qismi: Mahsulotlar ro'yxati, kategoriyasi, narxlari, Savat qismi. Admin uchun: Kun/hafta/oy/yillik hisobot, kategoriya va mahsulotlar bo'yicha filtrlar, yetkazuvchilar hisobotlari, buyurtma qabul ma'lumotlari",
+        desc: "Turli xil shirinliklar sotuvi bilan shug'ullanuvchi brend uchun platforma. Mijoz qismi: Mahsulotlar ro'yxati, kategoriyasi, narxlari, savat. Admin qismi: Kun/hafta/oy/yillik hisobot, kategoriya va mahsulotlar bo'yicha filtrlar, yetkazuvchilar hisobotlari, buyurtma qabul ma'lumotlari",
         link: "https://t.me/vanilluzbot"
     }
 };
@@ -97,6 +97,53 @@ function openProject(id) {
     const overlay = document.getElementById('overlay');
     const sheet = document.getElementById('sheet');
 
+    // Desc matnini parse qilish
+    function formatDesc(desc) {
+        if (desc.includes('Mijoz qismi:') || desc.includes('Admin uchun:')) {
+            const parts = desc.split(/(?=Mijoz qismi:|Admin uchun:)/g);
+            let html = '';
+            parts.forEach(part => {
+                part = part.trim();
+                if (!part) return;
+
+                if (part.startsWith('Mijoz qismi:') || part.startsWith('Admin qismi:')) {
+                    const colonIdx = part.indexOf(':');
+                    const label = part.substring(0, colonIdx);
+                    const items = part.substring(colonIdx + 1).trim()
+                        .split(',')
+                        .map(i => i.trim())
+                        .filter(Boolean);
+
+                    const color = part.startsWith('Mijoz') ? '#0071e3' : '#34c759';
+                    const icon  = part.startsWith('Mijoz') ? 'fa-user' : 'fa-user-shield';
+
+                    html += `
+                        <div style="background:white; border-radius:18px; padding:16px 18px; margin-bottom:12px; text-align:left;">
+                            <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+                                <div style="width:28px;height:28px;background:${color}15;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                                    <i class="fas ${icon}" style="color:${color};font-size:13px;"></i>
+                                </div>
+                                <span style="font-weight:700; font-size:13px; color:${color}; text-transform:uppercase; letter-spacing:0.5px;">${label}</span>
+                            </div>
+                            <div style="display:flex; flex-direction:column; gap:6px;">
+                                ${items.map(item => `
+                                    <div style="display:flex; align-items:center; gap:8px;">
+                                        <div style="width:5px;height:5px;border-radius:50%;background:${color};flex-shrink:0;"></div>
+                                        <span style="font-size:14px; color:#3a3a3c;">${item}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    html += `<p style="color:#86868b; line-height:1.6; font-size:15px; text-align:center; margin-bottom:12px; padding:0 5px;">${part}</p>`;
+                }
+            });
+            return html;
+        }
+        return `<p style="color:#86868b; line-height:1.6; font-size:16px; text-align:center; margin-bottom:25px; padding:0 10px;">${desc}</p>`;
+    }
+
     content.innerHTML = `
         <div style="text-align:center; margin-bottom:20px;">
             <div style="width:70px; height:70px; background:#f0f7ff; border-radius:20px; display:flex; align-items:center; justify-content:center; margin:0 auto 15px;">
@@ -105,8 +152,8 @@ function openProject(id) {
             <h2 style="font-size:26px; font-weight:700; color:#1d1d1f; margin-bottom:5px;">${p.title}</h2>
             <p style="color:#0071e3; font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:1px;">${p.subtitle}</p>
         </div>
-        <p style="color:#86868b; line-height:1.6; font-size:16px; text-align:center; margin-bottom:25px; padding:0 10px;">${p.desc}</p>
-        <a href="${p.link}" target="_blank" style="display:block; background:#1d1d1f; color:white; text-align:center; padding:18px; border-radius:22px; text-decoration:none; font-weight:600; transition:0.3s;" 
+        <div style="margin-bottom:20px;">${formatDesc(p.desc)}</div>
+        <a href="${p.link}" target="_blank" style="display:block; background:#1d1d1f; color:white; text-align:center; padding:18px; border-radius:22px; text-decoration:none; font-weight:600; transition:0.3s;"
            onclick="tg.HapticFeedback.impactOccurred('light')">
            Loyihani ko'rish <i class="fas fa-external-link-alt" style="margin-left:8px; font-size:13px;"></i>
         </a>
@@ -117,7 +164,7 @@ function openProject(id) {
         overlay.style.opacity = '1';
         sheet.style.bottom = '0';
     }, 10);
-    
+
     tg.HapticFeedback.impactOccurred('medium');
 }
 
