@@ -57,6 +57,13 @@ const projectData = {
         subtitle: "Biologiya o'quv platformasi",
         desc: "Pullik va bepul video materiallar, murakkab paginatsiya va biologiya fanidan maxsus o'quv qo'llanmalar jamlanmasi.",
         link: "https://t.me/sarvarbiologiyabot"
+    },
+    'vanillbot': {
+        title: "Le Vanille",
+        icon: "fa-cake-candles",
+        subtitle: "Shirinlik do'koni uchun platforma",
+        desc: "Turli xil shirinliklar sotuvi bilan shug'ullanuvchi brend uchun platforma. Mijoz qismi: Mahsulotlar ro'yxati, kategoriyasi, narxlari, Savat qismi. Admin uchun: Kun/hafta/oy/yillik hisobot, kategoriya va mahsulotlar bo'yicha filtrlar, yetkazuvchilar hisobotlari, buyurtma qabul ma'lumotlari",
+        link: "https://t.me/vanilluzbot"
     }
 };
 
