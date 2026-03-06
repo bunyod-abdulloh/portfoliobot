@@ -99,8 +99,8 @@ function openProject(id) {
 
     // Desc matnini parse qilish
     function formatDesc(desc) {
-        if (desc.includes('Mijoz qismi:') || desc.includes('Admin uchun:')) {
-            const parts = desc.split(/(?=Mijoz qismi:|Admin uchun:)/g);
+        if (desc.includes('Mijoz qismi:') || desc.includes('Admin qismi:')) {
+            const parts = desc.split(/(?=Mijoz qismi:|Admin qismi:)/g);
             let html = '';
             parts.forEach(part => {
                 part = part.trim();
