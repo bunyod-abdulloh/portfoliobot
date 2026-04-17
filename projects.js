@@ -7,7 +7,7 @@ const projectData = {
         icon: "fa-hospital-user",
         subtitle: "Nevrologiya klinikasi uchun CRM",
         desc: "Klinika boshqaruvini to'liq avtomatlashtiruvchi tizim. Bemorlar tarixi, to'lovlar tahlili va shifokorlar qabuli nazorati.",
-        link: "https://t.me/muhib_dev"
+        link: "https://t.me/khan_wins"
     },
     'mdcrmbot': {
         title: "MD CRM",
